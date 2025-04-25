@@ -243,6 +243,7 @@ jobs:
       if: env.ENABLE_LXC == 'true'
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+        echo "CONFIG_LOCALVERSION_AUTO=n" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_CONFIG }}
         rm -rf utils
         git clone https://github.com/tomxi1997/lxc-docker-support-for-android.git utils
         echo 'source "utils/Kconfig"' >> "Kconfig"
