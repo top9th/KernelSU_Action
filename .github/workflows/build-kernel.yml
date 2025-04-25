@@ -65,6 +65,9 @@ jobs:
                 echo "$CONFIG=$(grep -w "$CONFIG" "$CONFIG_ENV" | head -n 1 | cut -d "=" -f 2)" >> $GITHUB_ENV
             fi
         done
+        echo "ENABLE_LXC=$(cat $CONFIG_ENV | grep -w "ENABLE_LXC" | head -n 1 | cut -d "=" -f 2)" >> $GITHUB_ENV
+        echo "ENABLE_NETHUNTER=$(cat $CONFIG_ENV | grep -w "ENABLE_NETHUNTER" | head -n 1 | cut -d "=" -f 2)" >> $GITHUB_ENV
+        
 
     - name: Remove unused packages
       if: env.REMOVE_UNUSED_PACKAGES == 'true'
